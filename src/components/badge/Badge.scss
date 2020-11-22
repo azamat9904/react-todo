@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+
+.badge{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    border:2px solid transparent;
+
+    &--green{
+        background-color: $green;
+    }
+
+    &--blue{
+      background-color: $blue;
+    }
+
+    &--pink{
+      background-color: $pink;
+    }
+
+    &--grey{
+        background-color: $grey;
+    }
+
+    &--lime{
+        background-color: $lime;
+    }
+
+    &--purple{
+        background-color: $purple;
+    }
+
+    &--black{
+        background-color: $black;
+    }
+
+    &--red{
+        background-color: $red;
+    }
+
+    &.active{
+        border:2px solid #545454;
+    }
+  }

@@ -1,0 +1,35 @@
+.add-list{
+
+    &__popup{
+        width: 290px;
+        height: 180px;
+        background-color: #fff;
+        box-shadow: 0 6px 10px rgba(0,0,0,.05);
+        border-radius: 10px;
+        padding:5px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border:1px solid rgba(0,0,0,.03);
+        
+        button{
+            width: 100%;
+        }
+    }
+
+    &__colors{
+        display: flex;
+        justify-content: space-between;
+
+        .badge{
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+
+    &__close{
+        margin-left: auto;
+        cursor: pointer;
+    }
+}

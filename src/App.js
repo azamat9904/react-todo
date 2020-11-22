@@ -1,6 +1,9 @@
+import React, { useState } from 'react';
 import './App.scss';
 import List from './components/list/List';
+import AddList from './components/add-list/AddList';
 import listSvg from './assets/img/list.svg';
+import DB from './assets/db.json';
 
 const mainItem = [
   {
@@ -28,12 +31,29 @@ const items = [
   }
 ];
 
+
 function App() {
+  const [isVisable, setIsVisable] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(DB.colors[0]);
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
-        <List items={mainItem} />
-        <List items={items} />
+        <List
+          items={mainItem}
+          isRemovable={false}
+        />
+        <List
+          items={items}
+          isRemovable={true}
+        />
+        <AddList
+          isVisable={isVisable}
+          setIsVisable={setIsVisable}
+          colors={DB.colors}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
       </div>
       <div className="todo__tasks">
 
