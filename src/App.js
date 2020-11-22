@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import './App.scss';
 import List from './components/list/List';
 import AddList from './components/add-list/AddList';
+import Icon from './components/icon/Icon';
+
 import listSvg from './assets/img/list.svg';
+import editSvg from './assets/img/edit.svg';
+import checkSvg from './assets/img/check.svg';
+
 import DB from './assets/db.json';
 
 const mainItem = [
@@ -24,20 +29,38 @@ function App() {
     return item;
   }));
 
+  const onClose = () => {
+    setInputValue("");
+    setIsVisable(false);
+    setSelectedColor(DB.colors[0]);
+  }
+
   const onAddList = () => {
     if (!inputValue.trim()) {
       alert("Введите значене");
       return;
     }
     setList([...list, { id: list.length + 1, name: inputValue, colorId: selectedColor.id, color: selectedColor.name, active: false }]);
-    setInputValue("");
-    setIsVisable(false);
-    setSelectedColor(DB.colors[0]);
+    onClose();
+  }
+
+  const onRemoveList = (item) => {
+    const definetelyDelete = window.confirm("Are you really want to delete item ? ");
+    if (definetelyDelete)
+      console.log(item);
+  }
+
+  const visableHandler = (isVisable) => {
+    if (!isVisable) {
+      onClose();
+      return;
+    }
+    setIsVisable(true);
   }
 
   return (
     <div className="todo">
-      <div className="todo__sidebar">
+      <div className="sidebar">
         <List
           items={mainItem}
           isRemovable={false}
@@ -45,10 +68,11 @@ function App() {
         <List
           items={list}
           isRemovable={true}
+          onRemove={onRemoveList}
         />
         <AddList
           isVisable={isVisable}
-          setIsVisable={setIsVisable}
+          setIsVisable={visableHandler}
           colors={DB.colors}
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
@@ -57,8 +81,17 @@ function App() {
           onAddList={onAddList}
         />
       </div>
-      <div className="todo__tasks">
-
+      <div className="tasks">
+        <h1 className="tasks__title">Фронтенд <Icon iconUrl={editSvg} /></h1>
+        <div className="tasks__items">
+          <div className="tasks__checkbox">
+            <input type="checkbox" id="check" />
+            <label htmlFor="check">
+              <Icon iconUrl={checkSvg} />
+            </label>
+          </div>
+          <p>ReactJs Hooks (useState, useReducer, useEffect и т.д.)</p>
+        </div>
       </div>
     </div>
   );

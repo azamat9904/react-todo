@@ -1,4 +1,5 @@
   .list{
+    $self: &;
     margin-bottom: 20px;
 
     li{
@@ -7,7 +8,16 @@
       cursor: pointer;
       padding:14px 12px;
       margin-bottom: 5px;
-      
+      position: relative;
+
+      &:hover #{$self}__remove-icon{
+        opacity: .3;
+
+        &:hover{
+          opacity: .8;
+        }
+      }
+
       &:hover{
         background:rgba(255,255,255,.4);
       }
@@ -24,8 +34,15 @@
       }
     }
 
+    &__remove-icon{
+      position: absolute;
+      right:0;
+      opacity: 0;
+    }
+
     .badge{
       margin-right: 13px;
       margin-left: 4px;
     }
+
   }
