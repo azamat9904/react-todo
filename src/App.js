@@ -8,33 +8,32 @@ import DB from './assets/db.json';
 const mainItem = [
   {
     iconUrl: listSvg,
-    text: "Все задачи",
+    name: "Все задачи",
     active: false
-  }
-];
-
-const items = [
-  {
-    color: 'green',
-    text: 'Покупки',
-    active: false
-  },
-  {
-    color: 'blue',
-    text: 'Фронтенд',
-    active: false
-  },
-  {
-    color: 'pink',
-    text: 'Фильмы и Сериалы',
-    active: true
   }
 ];
 
 
 function App() {
+
   const [isVisable, setIsVisable] = useState(false);
   const [selectedColor, setSelectedColor] = useState(DB.colors[0]);
+  const [inputValue, setInputValue] = useState('');
+  const [list, setList] = useState(DB.lists.map((item) => {
+    item.color = DB.colors.find((color) => color.id === item.colorId).name;
+    return item;
+  }));
+
+  const onAddList = () => {
+    if (!inputValue.trim()) {
+      alert("Введите значене");
+      return;
+    }
+    setList([...list, { id: list.length + 1, name: inputValue, colorId: selectedColor.id, color: selectedColor.name, active: false }]);
+    setInputValue("");
+    setIsVisable(false);
+    setSelectedColor(DB.colors[0]);
+  }
 
   return (
     <div className="todo">
@@ -44,7 +43,7 @@ function App() {
           isRemovable={false}
         />
         <List
-          items={items}
+          items={list}
           isRemovable={true}
         />
         <AddList
@@ -53,6 +52,9 @@ function App() {
           colors={DB.colors}
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onAddList={onAddList}
         />
       </div>
       <div className="todo__tasks">

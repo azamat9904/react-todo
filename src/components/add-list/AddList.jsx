@@ -12,7 +12,7 @@ import "./AddList.scss";
 const editItem = [
     {
         iconUrl: addSvg,
-        text: "Добавить задачу",
+        name: "Добавить задачу",
         active: false
     }
 ];
@@ -22,7 +22,10 @@ const AddList = ({
     setIsVisable,
     colors,
     selectedColor,
-    setSelectedColor
+    setSelectedColor,
+    inputValue,
+    setInputValue,
+    onAddList
 }) => {
 
     return (
@@ -45,6 +48,8 @@ const AddList = ({
                         type="text"
                         placeholder="Название списка"
                         className="field"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
                     />
                     <div className="add-list__colors">
                         {
@@ -56,7 +61,7 @@ const AddList = ({
                             />))
                         }
                     </div>
-                    <button className="button">Добавить список</button>
+                    <button className="button" onClick={onAddList}>Добавить список</button>
                 </div>
             }
         </div>

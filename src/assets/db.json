@@ -3,37 +3,44 @@
     {
       "id": 1,
       "name": "Продажи",
-      "colorId": 5
+      "colorId": 5,
+      "active": false
     },
     {
       "id": 2,
       "name": "Фронтенд",
-      "colorId": 4
+      "colorId": 4,
+      "active": false
     },
     {
       "id": 3,
       "name": "Фильмы и сериалы",
-      "colorId": 3
+      "colorId": 3,
+      "active": false
     },
     {
       "id": 4,
       "name": "Книги",
-      "colorId": 2
+      "colorId": 2,
+      "active": false
     },
     {
       "id": 5,
       "name": "Личное",
-      "colorId": 1
+      "colorId": 1,
+      "active": false
     },
     {
       "name": "Спорт",
       "colorId": 3,
-      "id": 6
+      "id": 6,
+      "active": false
     },
     {
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
-      "id": 7
+      "id": 7,
+      "active": false
     }
   ],
   "tasks": [

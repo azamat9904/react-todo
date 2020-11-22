@@ -12,9 +12,9 @@ const List = ({ items, isRemovable, onClick }) => {
                     <li className={item.active ? 'active' : null} key={index}>
                         {
                             item.iconUrl ?
-                                <Icon iconUrl={item.iconUrl} alt={item.text} /> : <Badge color={item.color} />
+                                <Icon iconUrl={item.iconUrl} alt={item.name} /> : <Badge color={item.color} />
                         }
-                        <span>{item.text}</span>
+                        <span>{item.name}</span>
                     </li>
                 ))
             }
