@@ -23,6 +23,24 @@
       "name": "Личное",
       "colorId": 1,
       "active": false
+    },
+    {
+      "name": "task",
+      "colorId": 6,
+      "active": false,
+      "id": 6
+    },
+    {
+      "name": "asdas",
+      "colorId": 5,
+      "active": false,
+      "id": 8
+    },
+    {
+      "name": "last task",
+      "colorId": 4,
+      "active": false,
+      "id": 10
     }
   ],
   "tasks": [

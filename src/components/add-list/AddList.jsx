@@ -58,7 +58,7 @@ const AddList = ({
                                 color={color.name}
                                 key={color.id}
                                 click={() => setSelectedColor(color)}
-                                active={selectedColor.id === color.id}
+                                active={selectedColor && selectedColor.id === color.id}
                             />))
                         }
                     </div>
