@@ -1,4 +1,5 @@
 .add-list{
+    position: relative;
 
     &__popup{
         width: 290px;
@@ -11,9 +12,10 @@
         flex-direction: column;
         justify-content: space-around;
         border:1px solid rgba(0,0,0,.03);
-        position: relative;
+        position: absolute;
+        left:0;
         z-index: 100;
-        
+
         button{
             width: 100%;
         }

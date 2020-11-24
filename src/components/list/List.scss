@@ -1,7 +1,8 @@
   .list{
     $self: &;
     margin-bottom: 20px;
-
+    overflow: auto;
+    max-height: 400px;
     li{
       display: flex;
       align-items: center;

@@ -25,7 +25,8 @@ const AddList = ({
     setSelectedColor,
     inputValue,
     setInputValue,
-    onAddList
+    onAddList,
+    isLoading
 }) => {
 
     return (
@@ -61,7 +62,14 @@ const AddList = ({
                             />))
                         }
                     </div>
-                    <button className="button" onClick={onAddList}>Добавить список</button>
+                    <button
+                        className="button"
+                        onClick={onAddList}
+                    >
+                        {
+                            isLoading ? "Добавление..." : " Добавить список"
+                        }
+                    </button>
                 </div>
             }
         </div>

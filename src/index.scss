@@ -22,6 +22,22 @@ code {
     monospace;
 }
 
+
+::-webkit-scrollbar-track{
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  height: 100px;
+}
+
+
 .button{
   background-color: #4dd599;
   border-radius: 4px;
