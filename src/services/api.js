@@ -2,7 +2,7 @@ import axios from '../core/axios';
 
 export const appApi = {
     getList: () => {
-        return axios.get('/lists?_expand=color').then(response => response.data);
+        return axios.get('/lists?_expand=color&_embed=tasks').then(response => response.data);
     },
     getColors: () => {
         return axios.get('/colors').then(((response) => response.data));
@@ -12,5 +12,14 @@ export const appApi = {
     },
     deleteList: (id) => {
         return axios.delete('/lists/' + id).then(response => response.data);
+    },
+    getListTasks: (listId) => {
+        return axios.get(`/lists/${listId}?_embed=tasks`).then(response => response.data);
+    },
+    updateList: (id, name) => {
+        return axios.patch('/lists/' + id, { name: name }).then(response => response.data);
+    },
+    checkTask: (id, status) => {
+        return axios.patch('/tasks/' + id, { completed: status }).then(response => response.data);
     }
 }

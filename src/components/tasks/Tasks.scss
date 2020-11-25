@@ -1,6 +1,7 @@
 .tasks{
     flex:1;
     padding:60px;
+    position: relative;
 
     &__title{
       font-weight: bold;
@@ -24,6 +25,17 @@
         img{
           opacity: .3;
         }
+      }
+
+      &-input{
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39px;
+        color:#64c4ed;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f2f2f2;
+        outline: none;
+        border:none;
       }
     }
 
@@ -64,7 +76,7 @@
      }
     }
 
-    &__items{
+    &__item{
       display: flex;
       align-items: center;
       margin-top: 30px;
@@ -74,5 +86,14 @@
         font-size: 16px;
         font-weight: 500;
       }
+    }
+
+    .empty-task{
+      font-size: 27px;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
     }
   }

@@ -20,7 +20,7 @@ const AddList = ({ colors, list, setList }) => {
             alert("Введите значене");
             return;
         }
-        const newListItem = { name: inputValue, colorId: selectedColor.id, active: false }
+        const newListItem = { name: inputValue, colorId: selectedColor.id }
         setIsLoadingOnAdd(true);
         appApi.addList(newListItem).then((item) => {
             item.color = colors.find((color) => color.id === item.colorId).name;

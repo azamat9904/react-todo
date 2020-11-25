@@ -5,19 +5,46 @@ import checkSvg from '../../assets/img/check.svg';
 
 import "./Tasks.scss";
 
-const Tasks = () => {
+const Tasks = ({
+    item,
+    isVisable,
+    setIsVisable,
+    inputValue,
+    setInputValue,
+    saveTitle,
+    checkedHandler
+}) => {
+
     return (
         <div className="tasks">
-            <h1 className="tasks__title">Фронтенд <Icon iconUrl={editSvg} /></h1>
-            <div className="tasks__items">
-                <div className="tasks__checkbox">
-                    <input type="checkbox" id="check" />
-                    <label htmlFor="check">
-                        <Icon iconUrl={checkSvg} />
-                    </label>
-                </div>
-                <p>ReactJs Hooks (useState, useReducer, useEffect и т.д.)</p>
-            </div>
+            <input
+                value={inputValue}
+                className="tasks__title-input"
+                type={isVisable ? 'text' : 'hidden'}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyUp={(e) => saveTitle(e)}
+                autoFocus={true}
+            />
+            {
+                !isVisable && <h1 className="tasks__title">{item && item.name} <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span></h1>
+            }
+            {
+                item && item.tasks.map((task) => (
+                    <div className="tasks__item" key={task.id}>
+                        <div className="tasks__checkbox">
+                            <input type="checkbox" id={`check${task.id}`} onChange={(e) => checkedHandler(task.id, e.target.checked)} checked={task.completed} />
+                            <label htmlFor={`check${task.id}`}>
+                                <Icon iconUrl={checkSvg} />
+                            </label>
+                        </div>
+                        <p>{task.text}</p>
+                    </div>
+                ))
+            }
+
+            {
+                item && item.tasks.length == 0 && <span class="empty-task">Добавьте новую задачу</span>
+            }
         </div>
     )
 }

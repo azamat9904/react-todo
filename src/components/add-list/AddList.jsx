@@ -11,9 +11,9 @@ import "./AddList.scss";
 
 const editItem = [
     {
+        id: null,
         iconUrl: addSvg,
         name: "Добавить задачу",
-        active: false
     }
 ];
 
