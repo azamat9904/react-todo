@@ -21,5 +21,8 @@ export const appApi = {
     },
     checkTask: (id, status) => {
         return axios.patch('/tasks/' + id, { completed: status }).then(response => response.data);
+    },
+    addTask: (task) => {
+        return axios.post('/tasks', task).then((response) => response.data);
     }
 }

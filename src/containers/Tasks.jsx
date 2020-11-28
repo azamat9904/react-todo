@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment, useRef } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import TasksBase from '../components/tasks/Tasks';
 import Loader from '../components/loading/Loading';
 import { appApi } from '../services/api';
@@ -7,7 +7,7 @@ const Tasks = ({ setSelectedListId, ...props }) => {
     const [listTasks, setListTasks] = useState();
     const [loading, setLoading] = useState(false);
     const [isVisable, setIsVisable] = useState(false);
-    const [inputValue, setInputValue] = useState('');
+    const [checkBoxValue, setCheckBoxValue] = useState('');
 
     useEffect(() => {
         const id = props.match.params.id;
@@ -20,10 +20,10 @@ const Tasks = ({ setSelectedListId, ...props }) => {
             setLoading(false);
             props.history.push('/');
         })
-    }, [props.location.pathname]);
+    }, [props.location.pathname, props.history, props.match.params.id]);
 
     useEffect(() => {
-        setInputValue(listTasks && listTasks.name);
+        setCheckBoxValue(listTasks && listTasks.name);
     }, [listTasks]);
 
     const setIsVisableHandler = () => {
@@ -45,7 +45,7 @@ const Tasks = ({ setSelectedListId, ...props }) => {
 
     const saveTitle = (e) => {
         if (e.keyCode === 13) {
-            appApi.updateList(listTasks.id, inputValue).then(newList => {
+            appApi.updateList(listTasks.id, checkBoxValue).then(newList => {
                 const list = { ...listTasks, name: newList.name };
                 setListTasks(list);
             });
@@ -56,10 +56,11 @@ const Tasks = ({ setSelectedListId, ...props }) => {
         {
             loading ? <Loader /> : <TasksBase
                 item={listTasks}
+                setListTasks={setListTasks}
                 isVisable={isVisable}
                 setIsVisable={setIsVisableHandler}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
+                checkBoxValue={checkBoxValue}
+                setCheckBoxValue={setCheckBoxValue}
                 saveTitle={saveTitle}
                 checkedHandler={checkedHandler}
             />

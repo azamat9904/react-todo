@@ -1,4 +1,5 @@
 import React from 'react';
+import AddTask from '../../containers/AddTask';
 import Icon from '../icon/Icon';
 import editSvg from '../../assets/img/edit.svg';
 import checkSvg from '../../assets/img/check.svg';
@@ -7,21 +8,22 @@ import "./Tasks.scss";
 
 const Tasks = ({
     item,
+    setListTasks,
     isVisable,
     setIsVisable,
-    inputValue,
-    setInputValue,
+    checkBoxValue,
+    setCheckBoxValue,
     saveTitle,
-    checkedHandler
+    checkedHandler,
 }) => {
 
     return (
         <div className="tasks">
             <input
-                value={inputValue}
+                value={checkBoxValue}
                 className="tasks__title-input"
                 type={isVisable ? 'text' : 'hidden'}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => setCheckBoxValue(e.target.value)}
                 onKeyUp={(e) => saveTitle(e)}
                 autoFocus={true}
             />
@@ -43,8 +45,12 @@ const Tasks = ({
             }
 
             {
-                item && item.tasks.length == 0 && <span class="empty-task">Добавьте новую задачу</span>
+                item && item.tasks.length == 0 && <span className="empty-task">Добавьте новую задачу</span>
             }
+            <AddTask
+                list={item}
+                setListTasks={setListTasks}
+            />
         </div>
     )
 }

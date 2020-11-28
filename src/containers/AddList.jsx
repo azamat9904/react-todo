@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import AddListBase from '../components/add-list/AddList';
 import { appApi } from '../services/api';
 
-const AddList = ({ colors, list, setList }) => {
+const AddList = ({
+    colors,
+    list,
+    setList
+}) => {
 
     const [isVisable, setIsVisable] = useState(false);
     const [selectedColor, setSelectedColor] = useState();

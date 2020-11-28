@@ -22,7 +22,7 @@ const mainItem = [
 ];
 
 
-function App(props) {
+function App() {
 
   const [list, setList] = useState([]);
   const [colors, setColors] = useState([])
@@ -68,9 +68,21 @@ function App(props) {
         />
       </div>
       <Switch>
-        <Route exact path="/:id" render={(props) => <Tasks {...props} setSelectedListId={setSelectedListId} />} />
-        <Route exact path="/" component={Empty} />
-        <Route render={() => <Redirect to="/" />} />
+        <Route
+          exact
+          path="/:id"
+          render={(props) => <Tasks {...props}
+            setSelectedListId={setSelectedListId}
+          />}
+        />
+        <Route
+          exact
+          path="/"
+          component={Empty}
+        />
+        <Route
+          render={() => <Redirect to="/" />}
+        />
       </Switch>
     </div>
   );
