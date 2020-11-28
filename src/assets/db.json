@@ -24,11 +24,6 @@
       "name": "спорт",
       "colorId": 2,
       "id": 6
-    },
-    {
-      "name": "New task",
-      "colorId": 5,
-      "id": 7
     }
   ],
   "tasks": [
@@ -187,6 +182,18 @@
       "text": "New Task",
       "completed": true,
       "id": 33
+    },
+    {
+      "listId": 6,
+      "text": "фывфы",
+      "completed": false,
+      "id": 34
+    },
+    {
+      "listId": 6,
+      "text": "ефыл",
+      "completed": false,
+      "id": 35
     }
   ],
   "colors": [

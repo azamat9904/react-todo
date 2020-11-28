@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import AddListBase from '../components/add-list/AddList';
-import { appApi } from '../services/api';
+import { connect } from 'react-redux';
+import listActions from '../redux/actions/list';
+import colorActions from '../redux/actions/colors';
 
 const AddList = ({
+    addListSuccess,
     colors,
-    list,
-    setList
+    selectedColor,
+    addList,
+    setSelectedColor,
+    isLoading
 }) => {
-
     const [isVisable, setIsVisable] = useState(false);
-    const [selectedColor, setSelectedColor] = useState();
     const [inputValue, setInputValue] = useState('');
-    const [isLoadingOnAdd, setIsLoadingOnAdd] = useState(false);
-
-    useEffect(() => {
-        if (Array.isArray(colors))
-            setSelectedColor(colors[0]);
-
-    }, [colors]);
 
     const onAddList = () => {
         if (!inputValue.trim()) {
@@ -25,16 +21,16 @@ const AddList = ({
             return;
         }
         const newListItem = { name: inputValue, colorId: selectedColor.id }
-        setIsLoadingOnAdd(true);
-        appApi.addList(newListItem).then((item) => {
-            item.color = colors.find((color) => color.id === item.colorId).name;
-            const newList = [...list, item];
-            setList(newList);
-            onClose();
-        }).finally(() => {
-            setIsLoadingOnAdd(false);
-        });
+        addList(newListItem);
     }
+
+    useEffect(() => {
+        if (addListSuccess) {
+            onClose();
+        }
+        
+    }, [addListSuccess]);
+
 
     const visableHandler = (isVisable) => {
         if (!isVisable) {
@@ -59,8 +55,18 @@ const AddList = ({
         inputValue={inputValue}
         setInputValue={setInputValue}
         onAddList={onAddList}
-        isLoading={isLoadingOnAdd}
+        isLoading={isLoading}
     />
 }
 
-export default AddList;
+const mapStateToprops = (state) => {
+    return {
+        colors: state.colorState.colors,
+        list: state.listState.list,
+        selectedColor: state.colorState.selectedColor,
+        addListSuccess: state.listState.addListSuccess,
+        isLoading: state.listState.isLoading
+    }
+}
+
+export default connect(mapStateToprops, { ...listActions, ...colorActions })(AddList);

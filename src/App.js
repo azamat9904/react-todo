@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { appApi } from './services/api';
+import listActions from './redux/actions/list';
+import colorActions from './redux/actions/colors';
 
 import './App.scss';
 import List from './containers/List';
@@ -11,6 +13,7 @@ import { Route, Switch, Redirect } from 'react-router';
 
 import listSvg from './assets/img/list.svg';
 import Empty from './components/empty/Empty';
+import list from './redux/actions/list';
 
 
 const mainItem = [
@@ -22,52 +25,26 @@ const mainItem = [
 ];
 
 
-function App() {
+function App({
+  fetchList,
+  fetchColors
+}) {
 
-  const [list, setList] = useState([]);
-  const [colors, setColors] = useState([])
-  const [selectedListId, setSelectedListId] = useState(null);
-
-  useEffect(() => {
-    appApi.getList().then((list) => {
-      list.forEach((item) => {
-        item.color = item.color.name;
-      });
-      setList(list);
-    });
-  }, [])
+  // const [selectedListId, setSelectedListId] = useState(null);
 
   useEffect(() => {
-    appApi.getColors().then((colors) => {
-      setColors(colors);
-    });
+    fetchList();
+    fetchColors();
   }, [])
 
 
   return (
     <div className="todo">
       <div className="sidebar">
-        <AddList
-          colors={colors}
-          list={list}
-          setList={setList}
-        />
-
-        <List
-          list={mainItem}
-          isRemovable={false}
-          selectedListId={selectedListId}
-          setSelectedListId={setSelectedListId}
-        />
-        <List
-          list={list}
-          isRemovable={true}
-          setList={setList}
-          selectedListId={selectedListId}
-          setSelectedListId={setSelectedListId}
-        />
+        <AddList />
+        <List isRemovable={true} />
       </div>
-      <Switch>
+      {/* <Switch>
         <Route
           exact
           path="/:id"
@@ -83,9 +60,15 @@ function App() {
         <Route
           render={() => <Redirect to="/" />}
         />
-      </Switch>
+      </Switch> */}
     </div>
   );
 }
 
-export default withRouter(App);
+// const mapStateToProps = (state) => {
+//   return {
+//     list: state.listState.list
+//   }
+// }
+
+export default connect(null, { fetchList: listActions.fetchList, fetchColors: colorActions.fetchColors })(withRouter(App));

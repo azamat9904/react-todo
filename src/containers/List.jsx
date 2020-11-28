@@ -1,34 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 import ListBase from '../components/list/List';
-import { appApi } from '../services/api';
-
+import listActions from '../redux/actions/list';
 
 const List = ({
     list,
-    setList,
     isRemovable,
     selectedListId,
     setSelectedListId,
+    removeList,
+    isLoading,
     ...props
 }) => {
 
 
-    const [isLoadingOnRemove, setIsLoadingOnRemove] = useState(false);
-
     const onRemoveList = (item) => {
         const definetelyDelete = window.confirm("Are you really want to delete item ? ");
         if (definetelyDelete) {
-            setIsLoadingOnRemove(true);
-            appApi.deleteList(item.id).then(() => {
-                const l = list.filter((listItem) => {
-                    return listItem.id !== item.id;
-                });
-                setList(l);
-            }).finally(() => {
-                setIsLoadingOnRemove(false);
-            });
+            removeList(item.id);
         }
     }
 
@@ -45,10 +35,17 @@ const List = ({
         items={list}
         isRemovable={isRemovable}
         onRemove={onRemoveList}
-        isLoading={isLoadingOnRemove}
+        isLoading={isLoading}
         onItemClick={onItemClickHandler}
         selectedListId={selectedListId}
     />
 }
 
-export default withRouter(List);
+const mapStateToProps = (state) => {
+    return {
+        list: state.listState.list,
+        selectedListId: state.listState.selectedListId
+    }
+}
+
+export default connect(mapStateToProps, { ...listActions })(withRouter(List));
