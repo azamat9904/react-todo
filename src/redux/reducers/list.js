@@ -51,7 +51,8 @@ const list = (state = initialState, action) => {
             return {
                 ...state,
                 selectedListId: action.payload,
-                selectedList: state.list.find((listItem) => listItem.id === action.payload)
+                selectedList: state.list.find((listItem) =>
+                    listItem.id === action.payload) ? state.list.find((listItem) => listItem.id === action.payload) : -1
             };
         case actionTypes.REMOVE_LIST:
             return {
@@ -125,6 +126,18 @@ const list = (state = initialState, action) => {
                 addNewTaskSuccess: false,
                 addNewTaskFailed: true,
                 addNewTaskError: action.payload
+            };
+        case actionTypes.REMOVE_TASK:
+            return {
+                ...state,
+                list: state.list.filter((listItem) => {
+                    if (listItem.id === state.selectedListId) {
+                        listItem.tasks = action.payload.tasks;
+                        return { ...listItem }
+                    }
+                    return listItem;
+                }),
+                selectedList: action.payload,
             }
         default:
             return state;

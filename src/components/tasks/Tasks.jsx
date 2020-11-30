@@ -3,6 +3,7 @@ import AddTask from '../../containers/AddTask';
 import Icon from '../icon/Icon';
 import editSvg from '../../assets/img/edit.svg';
 import checkSvg from '../../assets/img/check.svg';
+import removeSvg from '../../assets/img/remove.svg';
 
 import "./Tasks.scss";
 
@@ -14,6 +15,7 @@ const Tasks = ({
     setCheckBoxValue,
     saveTitle,
     checkedHandler,
+    removeListTask
 }) => {
     return (
         <div className="tasks">
@@ -40,6 +42,9 @@ const Tasks = ({
                             </label>
                         </div>
                         <p>{task.text}</p>
+                        <div className="tasks__item-remove" onClick={() => removeListTask(task.id)}>
+                            <Icon iconUrl={removeSvg} />
+                        </div>
                     </div>
                 ))
             }

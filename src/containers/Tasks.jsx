@@ -4,7 +4,15 @@ import Loader from '../components/loading/Loading';
 import { connect } from 'react-redux';
 import listActions from '../redux/actions/list';
 
-const Tasks = ({ setSelectedListId, list, changeStatus, updateList, updateListNameSuccess, ...props }) => {
+const Tasks = ({
+    setSelectedListId,
+    list,
+    changeStatus,
+    updateList,
+    updateListNameSuccess,
+    removeListTask,
+    ...props
+}) => {
 
     const [isVisable, setIsVisable] = useState(false);
     const [checkBoxValue, setCheckBoxValue] = useState('');
@@ -34,6 +42,13 @@ const Tasks = ({ setSelectedListId, list, changeStatus, updateList, updateListNa
         }
     }
 
+    const removeTaskHandler = (id) => {
+        const needToDelete = confirm("Вы уверены что хотите удалить ?");
+        if (needToDelete) {
+            removeListTask(id);
+        }
+    }
+
     return <Fragment>
         <TasksBase
             item={list}
@@ -42,7 +57,7 @@ const Tasks = ({ setSelectedListId, list, changeStatus, updateList, updateListNa
             checkBoxValue={checkBoxValue}
             setCheckBoxValue={setCheckBoxValue}
             checkedHandler={checkedHandler}
-            // setListTasks={setListTasks}
+            removeListTask={removeTaskHandler}
             saveTitle={saveTitle}
         />
     </Fragment>

@@ -9,14 +9,14 @@ export const actionTypes = {
     SET_LOADING: "SET_LOADING",
     SET_SELECTED_LIST_ID: "SET_SELECTED_LIST_ID",
     REMOVE_LIST: "REMOVE_LIST",
-    ADD_TASK_TO_LIST: "ADD_TASK_TO_LIST",
     CHANGE_TASK_STATUS: "CHANGE_TASK_STATUS",
     UPDATE_LIST_NAME: "UPDATE_LIST_NAME",
     UPDATE_LIST_NAME_SUCCESS: "UPDATE_LIST_NAME_SUCCESS",
     UPDATE_LIST_NAME_FAILED: "UPDATE_LIST_NAME_FAILED",
     ADD_NEW_TASK: "ADD_NEW_TASK",
     ADD_NEW_TASK_SUCCESS: "ADD_NEW_TASK_SUCCESS",
-    ADD_NEW_TASK_FAILED: "ADD_NEW_TASK_FAILED"
+    ADD_NEW_TASK_FAILED: "ADD_NEW_TASK_FAILED",
+    REMOVE_TASK: "REMOVE_TASK"
 };
 
 const setList = (list) => ({
@@ -48,10 +48,6 @@ const removeList = (id) => ({
     payload: id
 });
 
-const addTaskToList = (task) => ({
-    type: actionTypes.ADD_TASK_TO_LIST,
-    payload: task
-});
 
 const changeTaskStatus = (selectedList) => ({
     type: actionTypes.CHANGE_TASK_STATUS,
@@ -88,6 +84,10 @@ const addNewTaskFailed = (error) => ({
     payload: error
 });
 
+const removeTask = (list) => ({
+    type: actionTypes.REMOVE_TASK,
+    payload: list
+});
 
 export default {
     fetchList: () => (dispatch) => {
@@ -123,13 +123,6 @@ export default {
             setLoading(false);
         });
     },
-    addTaskToList: (task) => (dispatch) => {
-        appApi.addTask(task).then(task => {
-            dispatch(addTaskToList(task));
-            // setListTasks({ ...list, tasks: [...list.tasks, task] });
-
-        });
-    },
     changeStatus: (taskId, status) => (dispatch, getState) => {
         appApi.checkTask(taskId, status).then(() => {
             const list = getState().listState.list;
@@ -162,6 +155,17 @@ export default {
         }).catch((e) => {
             console.log('error', e);
             dispatch(addNewTaskFailed(e.response));
+        });
+    },
+    removeListTask: (taskId) => (dispatch, getState) => {
+        appApi.deleteTask(taskId).then(() => {
+            const list = getState().listState.list;
+            const selectedListId = getState().listState.selectedListId;
+            let selectedList = list.find((listItem) => listItem.id === selectedListId);
+            selectedList = {
+                ...selectedList, tasks: selectedList.tasks.filter((task) => task.id !== taskId)
+            };
+            dispatch(removeTask(selectedList));
         });
     }
 }

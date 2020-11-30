@@ -3,6 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ListBase from '../components/list/List';
 import listActions from '../redux/actions/list';
+import listSvg from '../assets/img/list.svg';
+
+const mainItem =
+{
+    id: -1,
+    iconUrl: listSvg,
+    name: "Все задачи",
+};
+
 
 const List = ({
     list,
@@ -31,14 +40,24 @@ const List = ({
         props.history.push(`/${id}`);
     }
 
-    return <ListBase
-        items={list}
-        isRemovable={isRemovable}
-        onRemove={onRemoveList}
-        isLoading={isLoading}
-        onItemClick={onItemClickHandler}
-        selectedListId={selectedListId}
-    />
+    return <>
+        {
+            isRemovable ? <ListBase
+                items={list}
+                isRemovable={isRemovable}
+                onRemove={onRemoveList}
+                isLoading={isLoading}
+                onItemClick={onItemClickHandler}
+                selectedListId={selectedListId}
+            /> : <ListBase
+                    items={[mainItem]}
+                    isRemovable={isRemovable}
+                    onItemClick={onItemClickHandler}
+                    selectedListId={selectedListId}
+                />
+        }
+    </>
+
 }
 
 const mapStateToProps = (state) => {

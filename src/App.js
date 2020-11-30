@@ -11,18 +11,7 @@ import AddList from './containers/AddList';
 import Tasks from './containers/Tasks';
 import { Route, Switch, Redirect } from 'react-router';
 
-import listSvg from './assets/img/list.svg';
 import Empty from './components/empty/Empty';
-import list from './redux/actions/list';
-
-
-const mainItem = [
-  {
-    id: 'ALL_TASKS',
-    iconUrl: listSvg,
-    name: "Все задачи",
-  }
-];
 
 
 function App({
@@ -43,8 +32,10 @@ function App({
       const listId = +props.location.pathname.substr(1);
       const neededList = list.find((listItem) => listItem.id === listId);
 
-      if (!neededList)
+      if (!neededList) {
         props.history.push("/");
+        setSelectedListId(-1);
+      }
       else
         setSelectedListId(listId);
     }
@@ -54,6 +45,7 @@ function App({
     <div className="todo">
       <div className="sidebar">
         <AddList />
+        <List isRemovable={false} />
         <List isRemovable={true} />
       </div>
       <Switch>

@@ -24,5 +24,8 @@ export const appApi = {
     },
     addTask: (task) => {
         return axios.post('/tasks', task).then((response) => response.data);
+    },
+    deleteTask: (id) => {
+        return axios.delete('/tasks/' + id).then((response) => response.data);
     }
 }
