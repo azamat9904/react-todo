@@ -103,6 +103,7 @@ export default {
         appApi.addList(newListItem).then((item) => {
             const colors = getState().colorState.colors;
             item.color = colors.find((color) => color.id === item.colorId).name;
+            item.tasks = [];
             dispatch(addList(item));
             dispatch(addListSuccess());
         }).catch((e) => {

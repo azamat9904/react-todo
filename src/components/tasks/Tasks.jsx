@@ -28,7 +28,7 @@ const Tasks = ({
                 autoFocus={true}
             />
             {
-                !isVisable && <h1 className="tasks__title">{item && item.name}
+                !isVisable && <h1 className="tasks__title" >{item && item.name}
                     <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span>
                 </h1>
             }

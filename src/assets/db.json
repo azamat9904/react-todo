@@ -21,7 +21,7 @@
       "id": 5
     },
     {
-      "name": "спортdsfsd",
+      "name": "спорт",
       "colorId": 2,
       "id": 6
     },
@@ -39,21 +39,6 @@
       "name": "Я тебя люблю",
       "colorId": 8,
       "id": 11
-    },
-    {
-      "name": "То до",
-      "colorId": 5,
-      "id": 12
-    },
-    {
-      "name": "asdsasds",
-      "colorId": 7,
-      "id": 14
-    },
-    {
-      "name": "New newsaasd",
-      "colorId": 6,
-      "id": 15
     }
   ],
   "tasks": [
@@ -166,18 +151,6 @@
       "id": 33
     },
     {
-      "listId": 6,
-      "text": "фывфы",
-      "completed": false,
-      "id": 34
-    },
-    {
-      "listId": 6,
-      "text": "ефыл",
-      "completed": false,
-      "id": 35
-    },
-    {
       "listId": 4,
       "text": "New task",
       "completed": false,
@@ -238,28 +211,10 @@
       "id": 45
     },
     {
-      "listId": 6,
-      "text": "adss",
-      "completed": false,
-      "id": 46
-    },
-    {
       "listId": 5,
       "text": "Ne task",
       "completed": false,
       "id": 47
-    },
-    {
-      "listId": 7,
-      "text": "New",
-      "completed": false,
-      "id": 48
-    },
-    {
-      "listId": 7,
-      "text": "asasa",
-      "completed": false,
-      "id": 49
     },
     {
       "listId": 5,
@@ -268,178 +223,16 @@
       "id": 50
     },
     {
-      "listId": 6,
-      "text": "asa",
-      "completed": false,
-      "id": 51
-    },
-    {
-      "listId": 7,
-      "text": "asasa",
-      "completed": false,
-      "id": 52
-    },
-    {
-      "listId": 7,
-      "text": "asasa",
-      "completed": false,
-      "id": 53
-    },
-    {
-      "listId": 7,
-      "text": "asasa",
-      "completed": false,
-      "id": 54
-    },
-    {
-      "listId": 7,
-      "text": "asasasadas",
-      "completed": false,
-      "id": 55
-    },
-    {
-      "listId": 7,
-      "text": "asdas",
-      "completed": false,
-      "id": 56
-    },
-    {
-      "listId": 6,
-      "text": "adsas",
-      "completed": false,
-      "id": 57
-    },
-    {
-      "listId": 6,
-      "text": "asdas",
-      "completed": false,
-      "id": 58
-    },
-    {
-      "listId": 6,
-      "text": "asdasadas",
-      "completed": false,
-      "id": 59
-    },
-    {
-      "listId": 7,
-      "text": "asasa",
-      "completed": false,
-      "id": 60
-    },
-    {
-      "listId": 7,
-      "text": "asdsad",
-      "completed": false,
-      "id": 61
-    },
-    {
-      "listId": 5,
-      "text": "asds",
-      "completed": false,
-      "id": 62
-    },
-    {
-      "listId": 5,
-      "text": "asdas",
-      "completed": false,
-      "id": 63
-    },
-    {
-      "listId": 7,
-      "text": "asdsa",
-      "completed": false,
-      "id": 64
-    },
-    {
-      "listId": 5,
-      "text": "asddsd",
-      "completed": false,
-      "id": 68
-    },
-    {
-      "listId": 5,
-      "text": "asdas",
-      "completed": false,
-      "id": 69
-    },
-    {
-      "listId": 5,
-      "text": "asdasd",
-      "completed": false,
-      "id": 70
-    },
-    {
-      "listId": 5,
-      "text": "asds",
-      "completed": false,
-      "id": 71
-    },
-    {
-      "listId": 5,
-      "text": "asdasd",
-      "completed": false,
-      "id": 72
-    },
-    {
-      "listId": 6,
-      "text": "asds",
-      "completed": false,
-      "id": 74
-    },
-    {
-      "listId": 6,
-      "text": "asdasd",
-      "completed": false,
-      "id": 75
-    },
-    {
-      "listId": 6,
-      "text": "asdasd",
-      "completed": false,
-      "id": 76
-    },
-    {
-      "listId": 7,
-      "text": "New Task",
-      "completed": false,
-      "id": 77
-    },
-    {
-      "listId": 5,
-      "text": "New Task",
-      "completed": false,
+      "listId": 11,
+      "text": "Любить ",
+      "completed": true,
       "id": 78
     },
     {
-      "listId": 14,
-      "text": "New Task",
-      "completed": false,
+      "listId": 11,
+      "text": "Уважать ",
+      "completed": true,
       "id": 79
-    },
-    {
-      "listId": 14,
-      "text": "New Task",
-      "completed": false,
-      "id": 80
-    },
-    {
-      "listId": 14,
-      "text": "New Task",
-      "completed": false,
-      "id": 81
-    },
-    {
-      "listId": 14,
-      "text": "New Task",
-      "completed": false,
-      "id": 82
-    },
-    {
-      "listId": 14,
-      "text": "New Task",
-      "completed": false,
-      "id": 83
     }
   ],
   "colors": [
