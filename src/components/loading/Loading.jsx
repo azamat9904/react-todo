@@ -1,5 +1,7 @@
 import React from 'react';
+
 import mainLoaderSrc from '../../assets/img/main-loader.svg';
+
 import "./Loading.scss";
 
 const Loading = () => {

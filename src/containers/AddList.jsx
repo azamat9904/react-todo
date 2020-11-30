@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import AddListBase from '../components/add-list/AddList';
 import { connect } from 'react-redux';
+
+import AddListBase from '../components/add-list/AddList';
+
 import listActions from '../redux/actions/list';
 import colorActions from '../redux/actions/colors';
 

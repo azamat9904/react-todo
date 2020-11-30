@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import AddTaskBase from '../components/add-task/AddTask';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import AddTaskBase from '../components/add-task/AddTask';
+
 import listActions from '../redux/actions/list';
 
 const AddTask = ({
@@ -14,28 +16,23 @@ const AddTask = ({
     const [inputValue, setInputValue] = useState("");
 
     useEffect(() => {
-
         if (addNewTaskSuccess) {
             setInputValue("");
             setAddBtnVisable(true);
         }
-
     }, [addNewTaskSuccess])
 
     const addTaskHandler = () => {
         const listId = +props.location.pathname.substr(1);
-
         const task = {
             listId,
             text: inputValue,
             completed: false
         }
-
         if (inputValue.trim()) {
             addNewTask(list, task);
             return;
         }
-
         alert("Введите данные");
     }
 

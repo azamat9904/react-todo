@@ -1,4 +1,5 @@
 import React from 'react';
+
 import "./Badge.scss";
 
 const Badge = ({ color, click, active }) => {

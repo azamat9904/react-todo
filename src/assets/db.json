@@ -12,7 +12,7 @@
     },
     {
       "id": 4,
-      "name": "Книгиssdfds",
+      "name": "Книги",
       "colorId": 2
     },
     {
@@ -31,14 +31,19 @@
       "id": 7
     },
     {
-      "name": "Найти девушку",
-      "colorId": 4,
-      "id": 10
-    },
-    {
-      "name": "Я тебя люблю",
+      "name": "Я тебя ненавижу",
       "colorId": 8,
       "id": 11
+    },
+    {
+      "name": "Купить продукты",
+      "colorId": 2,
+      "id": 12
+    },
+    {
+      "name": "Сделать",
+      "colorId": 6,
+      "id": 13
     }
   ],
   "tasks": [
@@ -52,7 +57,7 @@
       "id": 2,
       "listId": 2,
       "text": "Изучить паттерны проектирования",
-      "completed": true
+      "completed": false
     },
     {
       "id": 3,
@@ -64,7 +69,7 @@
       "id": 4,
       "listId": 2,
       "text": "Redux (redux-observable, redux-saga)",
-      "completed": true
+      "completed": false
     },
     {
       "listId": 4,
@@ -99,7 +104,7 @@
     {
       "listId": 3,
       "text": "New Task",
-      "completed": false,
+      "completed": true,
       "id": 17
     },
     {
@@ -111,13 +116,13 @@
     {
       "listId": 3,
       "text": "Asada",
-      "completed": true,
+      "completed": false,
       "id": 20
     },
     {
       "listId": 3,
       "text": "My Task",
-      "completed": false,
+      "completed": true,
       "id": 21
     },
     {
@@ -145,63 +150,9 @@
       "id": 32
     },
     {
-      "listId": 6,
-      "text": "New Task",
+      "listId": 4,
+      "text": "My task",
       "completed": true,
-      "id": 33
-    },
-    {
-      "listId": 4,
-      "text": "New task",
-      "completed": false,
-      "id": 36
-    },
-    {
-      "listId": 4,
-      "text": "My task",
-      "completed": false,
-      "id": 37
-    },
-    {
-      "listId": 4,
-      "text": "My task",
-      "completed": false,
-      "id": 38
-    },
-    {
-      "listId": 4,
-      "text": "My task",
-      "completed": false,
-      "id": 39
-    },
-    {
-      "listId": 4,
-      "text": "My task",
-      "completed": false,
-      "id": 40
-    },
-    {
-      "listId": 4,
-      "text": "New task",
-      "completed": false,
-      "id": 41
-    },
-    {
-      "listId": 4,
-      "text": "New task",
-      "completed": false,
-      "id": 42
-    },
-    {
-      "listId": 4,
-      "text": "New taskasa",
-      "completed": false,
-      "id": 43
-    },
-    {
-      "listId": 4,
-      "text": "My task",
-      "completed": false,
       "id": 44
     },
     {
@@ -223,16 +174,28 @@
       "id": 50
     },
     {
-      "listId": 11,
-      "text": "Любить ",
-      "completed": true,
-      "id": 78
+      "listId": 12,
+      "text": "Мясо 3 штуки",
+      "completed": false,
+      "id": 51
     },
     {
-      "listId": 11,
-      "text": "Уважать ",
-      "completed": true,
-      "id": 79
+      "listId": 3,
+      "text": "asd",
+      "completed": false,
+      "id": 52
+    },
+    {
+      "listId": 3,
+      "text": "asdfds",
+      "completed": false,
+      "id": 53
+    },
+    {
+      "listId": 3,
+      "text": "asdfds",
+      "completed": false,
+      "id": 54
     }
   ],
   "colors": [

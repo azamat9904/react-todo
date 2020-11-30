@@ -1,7 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import ListBase from '../components/list/List';
+
 import listActions from '../redux/actions/list';
 import listSvg from '../assets/img/list.svg';
 

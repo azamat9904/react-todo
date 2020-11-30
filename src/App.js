@@ -52,13 +52,12 @@ function App({
         <Route
           exact
           path="/:id"
-          render={(props) => <Tasks {...props}
-          />}
+          render={(props) => <Tasks {...props} key={props.match.params.id} />}
         />
         <Route
           exact
           path="/"
-          component={Empty}
+          render={() => <Tasks showAll={true} />}
         />
         <Route
           render={() => <Redirect to="/" />}

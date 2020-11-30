@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
+
 import addSvg from '../../assets/img/add.svg';
+
 import Icon from '../icon/Icon';
+
 import "./AddTask.scss";
 
 const AddTask = ({

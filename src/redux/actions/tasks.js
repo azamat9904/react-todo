@@ -1,4 +1,0 @@
-
-const actionTypes = () => {
-    CHECK
-}

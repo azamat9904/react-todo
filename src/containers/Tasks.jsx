@@ -1,17 +1,18 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import TasksBase from '../components/tasks/Tasks';
-import Loader from '../components/loading/Loading';
 import { connect } from 'react-redux';
+
+import TasksBase from '../components/tasks/Tasks';
+
 import listActions from '../redux/actions/list';
 
 const Tasks = ({
-    setSelectedListId,
     list,
     changeStatus,
     updateList,
     updateListNameSuccess,
     removeListTask,
-    ...props
+    allList,
+    showAll
 }) => {
 
     const [isVisable, setIsVisable] = useState(false);
@@ -43,29 +44,44 @@ const Tasks = ({
     }
 
     const removeTaskHandler = (id) => {
-        const needToDelete = confirm("Вы уверены что хотите удалить ?");
+        const needToDelete = window.confirm("Вы уверены что хотите удалить ?");
         if (needToDelete) {
             removeListTask(id);
         }
     }
 
     return <Fragment>
-        <TasksBase
-            item={list}
-            isVisable={isVisable}
-            setIsVisable={setIsVisableHandler}
-            checkBoxValue={checkBoxValue}
-            setCheckBoxValue={setCheckBoxValue}
-            checkedHandler={checkedHandler}
-            removeListTask={removeTaskHandler}
-            saveTitle={saveTitle}
-        />
+        {
+            showAll ? <div className="allTasks">
+                {
+                    allList.map((list) => (
+                        <TasksBase
+                            item={list}
+                            checkedHandler={checkedHandler}
+                            key={list.id}
+                            showAll={showAll}
+                        />
+                    ))
+                }
+            </div> : <TasksBase
+                    item={list}
+                    isVisable={isVisable}
+                    setIsVisable={setIsVisableHandler}
+                    checkBoxValue={checkBoxValue}
+                    setCheckBoxValue={setCheckBoxValue}
+                    checkedHandler={checkedHandler}
+                    removeListTask={removeTaskHandler}
+                    saveTitle={saveTitle}
+                    showAll={showAll}
+                />
+        }
     </Fragment>
 }
 
 const mapStateToProps = (state) => {
     return {
         list: state.listState.selectedList,
+        allList: state.listState.list,
         updateListNameSuccess: state.listState.updateListNameSuccess
     }
 }

@@ -123,5 +123,40 @@
       left:50%;
       transform: translate(-50%, -50%);
       text-align: center;
+
+      &--all{
+        position: static;
+        top:auto;
+        left:auto;
+        transform:initial;
+        display: block;
+        text-align: left;
+        padding:20px 0 0;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .allTasks{
+    overflow-y: scroll;
+    flex: 1 1;
+
+    &::-webkit-scrollbar {
+      width: 12px;              
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #fff;        
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #b2b2b2;   
+      border-radius: 20px;      
+      border: 3px solid #fff;  
+    }
+
+    .tasks{
+      overflow: auto;
+
     }
   }

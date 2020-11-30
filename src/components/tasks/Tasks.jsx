@@ -1,6 +1,7 @@
 import React from 'react';
 import AddTask from '../../containers/AddTask';
 import Icon from '../icon/Icon';
+
 import editSvg from '../../assets/img/edit.svg';
 import checkSvg from '../../assets/img/check.svg';
 import removeSvg from '../../assets/img/remove.svg';
@@ -15,8 +16,14 @@ const Tasks = ({
     setCheckBoxValue,
     saveTitle,
     checkedHandler,
-    removeListTask
+    removeListTask,
+    showAll
 }) => {
+    const emptyClasses = ['empty-task'];
+
+    if (showAll)
+        emptyClasses.push('empty-task--all');
+
     return (
         <div className="tasks">
             <input
@@ -29,7 +36,7 @@ const Tasks = ({
             />
             {
                 !isVisable && <h1 className="tasks__title" >{item && item.name}
-                    <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span>
+                    {!showAll && <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span>}
                 </h1>
             }
             {
@@ -42,17 +49,20 @@ const Tasks = ({
                             </label>
                         </div>
                         <p>{task.text}</p>
-                        <div className="tasks__item-remove" onClick={() => removeListTask(task.id)}>
-                            <Icon iconUrl={removeSvg} />
-                        </div>
+                        {
+                            !showAll && <div className="tasks__item-remove" onClick={() => removeListTask(task.id)}>
+                                <Icon iconUrl={removeSvg} />
+                            </div>
+                        }
                     </div>
                 ))
             }
-
             {
-                item && item.tasks && item.tasks.length == 0 && <span className="empty-task">Добавьте новую задачу</span>
+                item && item.tasks && item.tasks.length == 0 && <span className={emptyClasses.join(" ")}>Добавьте новую задачу</span>
             }
-            <AddTask />
+            {
+                !showAll && <AddTask />
+            }
         </div>
     )
 }

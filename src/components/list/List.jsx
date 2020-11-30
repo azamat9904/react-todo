@@ -1,6 +1,7 @@
 import React from 'react';
 import Badge from '../badge/Badge';
 import Icon from '../icon/Icon';
+
 import removeIconUrl from '../../assets/img/remove.svg';
 import loadingIconUrl from '../../assets/img/loader.svg';
 
