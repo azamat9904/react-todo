@@ -31,7 +31,7 @@ const list = (state = initialState, action) => {
         case actionTypes.ADD_LIST:
             return {
                 ...state,
-                list: [...state.list, action.payload]
+                list: [...state.list, action.payload],
             };
         case actionTypes.ADD_LIST_SUCCESS:
             return {

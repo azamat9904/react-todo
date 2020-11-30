@@ -26,10 +26,12 @@ const Tasks = ({
                 autoFocus={true}
             />
             {
-                !isVisable && <h1 className="tasks__title">{item && item.name} <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span></h1>
+                !isVisable && <h1 className="tasks__title">{item && item.name}
+                    <span onClick={setIsVisable}><Icon iconUrl={editSvg} /></span>
+                </h1>
             }
             {
-                item && item.tasks.map((task) => (
+                item && item.tasks && item.tasks.map((task) => (
                     <div className="tasks__item" key={task.id}>
                         <div className="tasks__checkbox">
                             <input type="checkbox" id={`check${task.id}`} onChange={(e) => checkedHandler(task.id, e.target.checked)} checked={task.completed} />
@@ -43,7 +45,7 @@ const Tasks = ({
             }
 
             {
-                item && item.tasks.length == 0 && <span className="empty-task">Добавьте новую задачу</span>
+                item && item.tasks && item.tasks.length == 0 && <span className="empty-task">Добавьте новую задачу</span>
             }
             <AddTask />
         </div>

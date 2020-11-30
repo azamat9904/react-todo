@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AddTaskBase from '../components/add-task/AddTask';
 import { withRouter } from 'react-router-dom';
-import { appApi } from '../services/api';
 import { connect } from 'react-redux';
 import listActions from '../redux/actions/list';
-import list from '../redux/actions/list';
 
 const AddTask = ({
     list,

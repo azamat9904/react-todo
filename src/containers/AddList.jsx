@@ -28,7 +28,6 @@ const AddList = ({
         if (addListSuccess) {
             onClose();
         }
-        
     }, [addListSuccess]);
 
 

@@ -26,9 +26,34 @@
       "id": 6
     },
     {
-      "name": "asdfdsasdas",
+      "name": "Сделать что то ",
       "colorId": 4,
       "id": 7
+    },
+    {
+      "name": "Найти девушку",
+      "colorId": 4,
+      "id": 10
+    },
+    {
+      "name": "Я тебя люблю",
+      "colorId": 8,
+      "id": 11
+    },
+    {
+      "name": "То до",
+      "colorId": 5,
+      "id": 12
+    },
+    {
+      "name": "asdsasds",
+      "colorId": 7,
+      "id": 14
+    },
+    {
+      "name": "New newsaasd",
+      "colorId": 6,
+      "id": 15
     }
   ],
   "tasks": [
@@ -113,7 +138,7 @@
     {
       "listId": 3,
       "text": "Asada",
-      "completed": false,
+      "completed": true,
       "id": 20
     },
     {
@@ -451,6 +476,48 @@
       "text": "New Task",
       "completed": false,
       "id": 77
+    },
+    {
+      "listId": 5,
+      "text": "New Task",
+      "completed": false,
+      "id": 78
+    },
+    {
+      "listId": 14,
+      "text": "New Task",
+      "completed": false,
+      "id": 79
+    },
+    {
+      "listId": 14,
+      "text": "New Task",
+      "completed": false,
+      "id": 80
+    },
+    {
+      "listId": 14,
+      "text": "New Task",
+      "completed": false,
+      "id": 81
+    },
+    {
+      "listId": 14,
+      "text": "New Task",
+      "completed": false,
+      "id": 82
+    },
+    {
+      "listId": 14,
+      "text": "New Task",
+      "completed": false,
+      "id": 83
+    },
+    {
+      "listId": 2,
+      "text": "My task",
+      "completed": false,
+      "id": 84
     }
   ],
   "colors": [

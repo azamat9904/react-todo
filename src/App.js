@@ -26,17 +26,29 @@ const mainItem = [
 
 
 function App({
+  list,
   fetchList,
-  fetchColors
+  fetchColors,
+  setSelectedListId,
+  ...props
 }) {
-
-  // const [selectedListId, setSelectedListId] = useState(null);
 
   useEffect(() => {
     fetchList();
     fetchColors();
   }, [])
 
+  useEffect(() => {
+    if (list.length !== 0) {
+      const listId = +props.location.pathname.substr(1);
+      const neededList = list.find((listItem) => listItem.id === listId);
+
+      if (!neededList)
+        props.history.push("/");
+      else
+        setSelectedListId(listId);
+    }
+  }, [list, props.location.pathname]);
 
   return (
     <div className="todo">
@@ -49,7 +61,6 @@ function App({
           exact
           path="/:id"
           render={(props) => <Tasks {...props}
-          // setSelectedListId={setSelectedListId}
           />}
         />
         <Route
@@ -65,10 +76,10 @@ function App({
   );
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     list: state.listState.list
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    list: state.listState.list
+  }
+}
 
-export default connect(null, { fetchList: listActions.fetchList, fetchColors: colorActions.fetchColors })(withRouter(App));
+export default connect(mapStateToProps, { ...listActions, ...colorActions })(withRouter(App));
