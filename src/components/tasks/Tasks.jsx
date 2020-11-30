@@ -8,7 +8,6 @@ import "./Tasks.scss";
 
 const Tasks = ({
     item,
-    setListTasks,
     isVisable,
     setIsVisable,
     checkBoxValue,
@@ -16,7 +15,6 @@ const Tasks = ({
     saveTitle,
     checkedHandler,
 }) => {
-
     return (
         <div className="tasks">
             <input
@@ -47,10 +45,7 @@ const Tasks = ({
             {
                 item && item.tasks.length == 0 && <span className="empty-task">Добавьте новую задачу</span>
             }
-            <AddTask
-                list={item}
-                setListTasks={setListTasks}
-            />
+            <AddTask />
         </div>
     )
 }

@@ -44,12 +44,12 @@ function App({
         <AddList />
         <List isRemovable={true} />
       </div>
-      {/* <Switch>
+      <Switch>
         <Route
           exact
           path="/:id"
           render={(props) => <Tasks {...props}
-            setSelectedListId={setSelectedListId}
+          // setSelectedListId={setSelectedListId}
           />}
         />
         <Route
@@ -60,7 +60,7 @@ function App({
         <Route
           render={() => <Redirect to="/" />}
         />
-      </Switch> */}
+      </Switch>
     </div>
   );
 }

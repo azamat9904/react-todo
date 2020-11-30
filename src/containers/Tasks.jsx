@@ -1,71 +1,58 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import TasksBase from '../components/tasks/Tasks';
 import Loader from '../components/loading/Loading';
-import { appApi } from '../services/api';
+import { connect } from 'react-redux';
+import listActions from '../redux/actions/list';
 
-const Tasks = ({ setSelectedListId, ...props }) => {
-    const [listTasks, setListTasks] = useState();
-    const [loading, setLoading] = useState(false);
+const Tasks = ({ setSelectedListId, list, changeStatus, updateList, updateListNameSuccess, ...props }) => {
+
     const [isVisable, setIsVisable] = useState(false);
     const [checkBoxValue, setCheckBoxValue] = useState('');
 
     useEffect(() => {
-        const id = props.match.params.id;
-        setLoading(true);
-        appApi.getListTasks(id).then(tasks => {
-            setListTasks(tasks);
-            setSelectedListId(+id);
-            setLoading(false);
-        }).catch(() => {
-            setLoading(false);
-            props.history.push('/');
-        })
-    }, [props.location.pathname, props.history, props.match.params.id]);
+        if (list && list.name)
+            setCheckBoxValue(list.name);
 
-    useEffect(() => {
-        setCheckBoxValue(listTasks && listTasks.name);
-    }, [listTasks]);
+        if (updateListNameSuccess) {
+            setIsVisable(false);
+        }
+
+    }, [list, updateListNameSuccess]);
 
     const setIsVisableHandler = () => {
         setIsVisable(!isVisable);
     };
 
+
     const checkedHandler = (taskId, status) => {
-        appApi.checkTask(taskId, status).then(() => {
-            const remainedTasks = listTasks.tasks.filter((listItem) => {
-                if (listItem.id !== taskId) {
-                    return listItem;
-                }
-                listItem.completed = status;
-                return listItem;
-            });
-            setListTasks({ ...listTasks, tasks: remainedTasks });
-        });
+        changeStatus(taskId, status);
     }
 
     const saveTitle = (e) => {
         if (e.keyCode === 13) {
-            appApi.updateList(listTasks.id, checkBoxValue).then(newList => {
-                const list = { ...listTasks, name: newList.name };
-                setListTasks(list);
-            });
-            setIsVisable(false);
+            updateList(list.id, checkBoxValue);
         }
     }
+
     return <Fragment>
-        {
-            loading ? <Loader /> : <TasksBase
-                item={listTasks}
-                setListTasks={setListTasks}
-                isVisable={isVisable}
-                setIsVisable={setIsVisableHandler}
-                checkBoxValue={checkBoxValue}
-                setCheckBoxValue={setCheckBoxValue}
-                saveTitle={saveTitle}
-                checkedHandler={checkedHandler}
-            />
-        }
+        <TasksBase
+            item={list}
+            isVisable={isVisable}
+            setIsVisable={setIsVisableHandler}
+            checkBoxValue={checkBoxValue}
+            setCheckBoxValue={setCheckBoxValue}
+            checkedHandler={checkedHandler}
+            // setListTasks={setListTasks}
+            saveTitle={saveTitle}
+        />
     </Fragment>
 }
 
-export default Tasks;
+const mapStateToProps = (state) => {
+    return {
+        list: state.listState.selectedList,
+        updateListNameSuccess: state.listState.updateListNameSuccess
+    }
+}
+
+export default connect(mapStateToProps, { ...listActions })(Tasks);
