@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -10,8 +10,6 @@ import List from './containers/List';
 import AddList from './containers/AddList';
 import Tasks from './containers/Tasks';
 import { Route, Switch, Redirect } from 'react-router';
-
-import Empty from './components/empty/Empty';
 
 
 function App({

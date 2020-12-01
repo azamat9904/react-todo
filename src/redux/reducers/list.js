@@ -65,7 +65,7 @@ const list = (state = initialState, action) => {
             return {
                 ...state,
                 list: state.list.filter((listItem) => {
-                    if (listItem.id === state.selectedListId) {
+                    if (listItem.id === action.payload.id) {
                         return action.payload;
                     }
                     return listItem;

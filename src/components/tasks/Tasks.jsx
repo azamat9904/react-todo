@@ -19,6 +19,7 @@ const Tasks = ({
     removeListTask,
     showAll
 }) => {
+
     const emptyClasses = ['empty-task'];
 
     if (showAll)
@@ -43,7 +44,7 @@ const Tasks = ({
                 item && item.tasks && item.tasks.map((task) => (
                     <div className="tasks__item" key={task.id}>
                         <div className="tasks__checkbox">
-                            <input type="checkbox" id={`check${task.id}`} onChange={(e) => checkedHandler(task.id, e.target.checked)} checked={task.completed} />
+                            <input type="checkbox" id={`check${task.id}`} onChange={(e) => checkedHandler(item.id, task.id, e.target.checked)} checked={task.completed} />
                             <label htmlFor={`check${task.id}`}>
                                 <Icon iconUrl={checkSvg} />
                             </label>

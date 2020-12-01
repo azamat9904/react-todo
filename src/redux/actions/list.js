@@ -124,10 +124,10 @@ export default {
             setLoading(false);
         });
     },
-    changeStatus: (taskId, status) => (dispatch, getState) => {
+    changeStatus: (listId, taskId, status) => (dispatch, getState) => {
         appApi.checkTask(taskId, status).then(() => {
             const list = getState().listState.list;
-            const selectedListId = getState().listState.selectedListId;
+            const selectedListId = listId;
             let selectedList = list.find((listItem) => listItem.id === selectedListId);
             selectedList = {
                 ...selectedList, tasks: selectedList.tasks.filter((task) => {

@@ -41,7 +41,7 @@
       "id": 12
     },
     {
-      "name": "Сделать",
+      "name": "Сделатьь",
       "colorId": 6,
       "id": 13
     }
@@ -51,7 +51,7 @@
       "id": 1,
       "listId": 2,
       "text": "Изучить JavaScript",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
@@ -63,7 +63,7 @@
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
+      "completed": false
     },
     {
       "id": 4,
@@ -74,7 +74,7 @@
     {
       "listId": 4,
       "text": "Купить 1984!",
-      "completed": false,
+      "completed": true,
       "id": 10
     },
     {
@@ -116,13 +116,13 @@
     {
       "listId": 3,
       "text": "Asada",
-      "completed": false,
+      "completed": true,
       "id": 20
     },
     {
       "listId": 3,
       "text": "My Task",
-      "completed": true,
+      "completed": false,
       "id": 21
     },
     {
@@ -140,13 +140,13 @@
     {
       "listId": 4,
       "text": "New Task",
-      "completed": false,
+      "completed": true,
       "id": 31
     },
     {
       "listId": 6,
       "text": "New Task",
-      "completed": false,
+      "completed": true,
       "id": 32
     },
     {
@@ -164,13 +164,13 @@
     {
       "listId": 5,
       "text": "Ne task",
-      "completed": false,
+      "completed": true,
       "id": 47
     },
     {
       "listId": 5,
       "text": "My task",
-      "completed": false,
+      "completed": true,
       "id": 50
     },
     {
@@ -188,14 +188,26 @@
     {
       "listId": 3,
       "text": "asdfds",
-      "completed": false,
+      "completed": true,
       "id": 53
     },
     {
       "listId": 3,
       "text": "asdfds",
-      "completed": false,
+      "completed": true,
       "id": 54
+    },
+    {
+      "listId": 13,
+      "text": "Make something",
+      "completed": false,
+      "id": 55
+    },
+    {
+      "listId": 2,
+      "text": "New task",
+      "completed": true,
+      "id": 56
     }
   ],
   "colors": [

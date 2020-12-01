@@ -33,8 +33,8 @@ const Tasks = ({
     };
 
 
-    const checkedHandler = (taskId, status) => {
-        changeStatus(taskId, status);
+    const checkedHandler = (listId, taskId, status) => {
+        changeStatus(listId, taskId, status);
     }
 
     const saveTitle = (e) => {
