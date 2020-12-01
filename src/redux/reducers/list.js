@@ -13,7 +13,10 @@ const initialState = {
     updateListNameError: null,
     addNewTaskSuccess: false,
     addNewTaskFailed: false,
-    addNewTaskError: null
+    addNewTaskError: null,
+    updateTaskSuccess: false,
+    updateTaskFailed: false,
+    updateTaskError: null
 };
 
 const list = (state = initialState, action) => {
@@ -138,7 +141,36 @@ const list = (state = initialState, action) => {
                     return listItem;
                 }),
                 selectedList: action.payload,
-            }
+            };
+        case actionTypes.UPDATE_TASK_TEXT:
+            return {
+                ...state,
+                list: state.list.filter((listItem) => {
+                    if (listItem.id === action.payload.id) {
+                        listItem.tasks = action.payload.tasks;
+                        return { ...listItem }
+                    }
+                    return listItem;
+                }),
+                selectedList: action.payload,
+                updateTaskSuccess: false,
+                updateTaskFailed: false,
+                updateTaskError: null
+            };
+        case actionTypes.UPDATE_TASK_TEXT_SUCCESS:
+            return {
+                ...state,
+                updateTaskSuccess: true,
+                updateTaskFailed: false,
+                updateTaskError: null
+            };
+        case actionTypes.UPDATE_TASK_NAME_FAILED:
+            return {
+                ...state,
+                updateTaskSuccess: false,
+                updateTaskFailed: true,
+                updateTaskError: action.payload
+            };
         default:
             return state;
     }

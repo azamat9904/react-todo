@@ -1,6 +1,7 @@
 import React from 'react';
 import AddTask from '../../containers/AddTask';
 import Icon from '../icon/Icon';
+import Input from '../../containers/Input';
 
 import editSvg from '../../assets/img/edit.svg';
 import checkSvg from '../../assets/img/check.svg';
@@ -17,7 +18,7 @@ const Tasks = ({
     saveTitle,
     checkedHandler,
     removeListTask,
-    showAll
+    showAll,
 }) => {
 
     const emptyClasses = ['empty-task'];
@@ -44,14 +45,22 @@ const Tasks = ({
                 item && item.tasks && item.tasks.map((task) => (
                     <div className="tasks__item" key={task.id}>
                         <div className="tasks__checkbox">
-                            <input type="checkbox" id={`check${task.id}`} onChange={(e) => checkedHandler(item.id, task.id, e.target.checked)} checked={task.completed} />
+                            <input
+                                type="checkbox"
+                                id={`check${task.id}`}
+                                onChange={(e) => checkedHandler(item.id, task.id, e.target.checked)}
+                                checked={task.completed}
+                            />
                             <label htmlFor={`check${task.id}`}>
                                 <Icon iconUrl={checkSvg} />
                             </label>
                         </div>
-                        <p>{task.text}</p>
+                        <Input task={task} />
                         {
-                            !showAll && <div className="tasks__item-remove" onClick={() => removeListTask(task.id)}>
+                            !showAll && <div
+                                className="tasks__item-remove"
+                                onClick={() => removeListTask(task.id)}
+                            >
                                 <Icon iconUrl={removeSvg} />
                             </div>
                         }

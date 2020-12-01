@@ -16,7 +16,10 @@ export const actionTypes = {
     ADD_NEW_TASK: "ADD_NEW_TASK",
     ADD_NEW_TASK_SUCCESS: "ADD_NEW_TASK_SUCCESS",
     ADD_NEW_TASK_FAILED: "ADD_NEW_TASK_FAILED",
-    REMOVE_TASK: "REMOVE_TASK"
+    REMOVE_TASK: "REMOVE_TASK",
+    UPDATE_TASK_TEXT: "UPDATE_TASK_TEXT",
+    UPDATE_TASK_TEXT_SUCCESS: "UPDATE_TASK_TEXT_SUCCESS",
+    UPDATE_TASK_TEXT_FAILED: "UPDATE_TASK_TEXT_FAILED"
 };
 
 const setList = (list) => ({
@@ -87,6 +90,20 @@ const addNewTaskFailed = (error) => ({
 const removeTask = (list) => ({
     type: actionTypes.REMOVE_TASK,
     payload: list
+});
+
+const updateTaskText = (list) => ({
+    type: actionTypes.UPDATE_TASK_TEXT,
+    payload: list
+});
+
+const updateTaskTextSuccess = () => ({
+    type: actionTypes.UPDATE_TASK_TEXT_SUCCESS
+});
+
+const updateTaskTextFailed = (error) => ({
+    type: actionTypes.UPDATE_TASK_TEXT_FAILED,
+    payload: error
 });
 
 export default {
@@ -167,6 +184,26 @@ export default {
                 ...selectedList, tasks: selectedList.tasks.filter((task) => task.id !== taskId)
             };
             dispatch(removeTask(selectedList));
+        });
+    },
+    updateTask: (listId, taskId, text) => (dispatch, getState) => {
+        appApi.updateTaskText(taskId, text).then((updatedTask) => {
+            const list = getState().listState.list;
+            const selectedListId = listId;
+            let selectedList = list.find((listItem) => listItem.id === selectedListId);
+            selectedList = {
+                ...selectedList, tasks: selectedList.tasks.filter((task) => {
+                    if (task.id === taskId) {
+                        task.text = text;
+                        return task;
+                    }
+                    return task;
+                })
+            };
+            dispatch(updateTaskText(selectedList));
+            dispatch(updateTaskTextSuccess());
+        }).catch((e) => {
+            dispatch(updateTaskTextFailed(e.response));
         });
     }
 }

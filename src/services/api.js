@@ -27,5 +27,8 @@ export const appApi = {
     },
     deleteTask: (id) => {
         return axios.delete('/tasks/' + id).then((response) => response.data);
+    },
+    updateTaskText: (taskId, text) => {
+        return axios.patch('/tasks/' + taskId, { text }).then((response) => response.data);
     }
 }
